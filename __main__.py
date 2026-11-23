@@ -1,15 +1,16 @@
+from dotenv import load_dotenv
 from product_search import search_products
+from query_extraction import extract_query
+from langgraph.graph import StateGraph, MessagesState, START, END
 
 def main():
-    print("Hello! Give me up to five keywords to describe the product you are looking for: ")
-    keywords = []
-    for i in range(5):
-        next_keyword = input()
-        if not next_keyword: 
-            break
-        keywords.append(next_keyword)
+    load_dotenv()
 
-    matched_products = search_products(keywords)
+    print("Hello! Describe the product you are looking for: ")
+    description = input()
+    query = extract_query(description)
+
+    matched_products = search_products(query)
     print("Your matched products are \n")
     for p in matched_products:
         print(p)
