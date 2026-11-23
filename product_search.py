@@ -1,8 +1,12 @@
 import os
 import serpapi
-from models.Product import Product
+from objects.Product import Product
+from pydantic import BaseModel, Field
+from typing import List, Optional, Literal
 
-# this method connects to the API and finds top 10 products matching the key words
+def generate_structured_description(description):
+    return None
+
 def search_products(query):        
     client = serpapi.Client(api_key=os.getenv("SERPAPI_KEY"))
 
